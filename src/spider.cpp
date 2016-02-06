@@ -51,7 +51,7 @@ int main(int argc,char **argv){
 		daemon();
 	}
 
-	while(1){};
+	//解析配置文件
 
 	return 0;
 }
