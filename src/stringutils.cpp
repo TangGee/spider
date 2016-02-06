@@ -44,19 +44,20 @@ char **split(char *line,char c, int *count){
 	}
 	char *str=line;
 	char **vector=NULL;
-	char *temp;
+	char *temp=NULL;
+	(*count)=0;
 	
 	while((temp=strchr(str,c))!=NULL){
 		(*count)++;
 		vector=(char **) realloc(vector,(*count)*sizeof(char *));
 		vector[(*count)-1] = trim(str);
+		(*temp)='\0';
 		str=temp+1;
 	}
 
-	vector[(*count)] = trim(str);
-	if(DEBUG){
-		printf("%s  %d",line,(*count));
-	}
+	(*count)++;
+        vector=(char **) realloc(vector,(*count)*sizeof(char *));
+	vector[(*count)-1] = trim(str);
 
 	return vector;
 
